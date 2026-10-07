@@ -1,0 +1,65 @@
+Lab5 - All Git / GitHub commands used
+=====================================
+
+TASK 1 - Create repo, add 2 files, commit, show history
+------------------------------------------------------
+git init -b main
+git add README.md hello.txt
+git commit -m "Initial commit: add README and hello.txt"
+git log --oneline
+
+
+TASK 2 - .gitignore (one file, *.log, one folder) + prove with status
+---------------------------------------------------------------------
+# Created: secrets.txt, app.log, debug.log, temp_data/
+# Created .gitignore with:
+#   secrets.txt
+#   *.log
+#   temp_data/
+
+git add .gitignore
+git commit -m "Add .gitignore for secrets, logs, and temp_data"
+git status
+# Result: working tree clean (ignored files do NOT show as untracked)
+
+
+TASK 3 - Feature branch, commit change, merge into main
+-------------------------------------------------------
+git checkout -b feature/greeting
+git add hello.txt
+git commit -m "Update hello.txt on feature branch"
+git checkout main
+git merge feature/greeting -m "Merge feature/greeting into main"
+git log --oneline
+git status
+
+
+TASK 4 - Push to GitHub + fork public repo + clone fork
+-------------------------------------------------------
+# Push local Lab5 repo to GitHub
+gh repo create lab5-git-practice --public --source=. --remote=origin --push --description "DEV Lab5 Git student tasks"
+git remote -v
+git status
+git log --oneline
+
+# Fork a public repo (octocat/Spoon-Knife) then clone YOUR fork
+gh repo fork octocat/Spoon-Knife --clone=false
+gh repo clone azhar-fullstack/Spoon-Knife e:\Code\Uni\DEV\Spoon-Knife
+cd e:\Code\Uni\DEV\Spoon-Knife
+git remote -v
+git log --oneline -5
+git status
+
+
+USEFUL LINKS
+------------
+Lab5 repo:  https://github.com/azhar-fullstack/lab5-git-practice
+Forked repo: https://github.com/azhar-fullstack/Spoon-Knife
+Original:    https://github.com/octocat/Spoon-Knife
+
+
+SHOW TO INSTRUCTOR
+------------------
+cd e:\Code\Uni\DEV\Lab5
+git status
+git log --oneline
